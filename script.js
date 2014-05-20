@@ -1,7 +1,7 @@
 // Code goes here
 
 var app = angular.module('OrbitalSunriseTracker', function() {});
-app.controller('mainCtrl', function($scope, $interval) {
+app.controller('mainCtrl', function($scope, $interval, $q) {
 	$scope.isEmbed = false;
 	$scope.events = [];
 
@@ -36,13 +36,13 @@ app.controller('mainCtrl', function($scope, $interval) {
 
 		$scope.events.push({
 			type: 'sunrise',
-			timeFormatted: moment().add('minutes', (nextSunriseTime - currTime) / 60).format('hh:MM a'),
+			timeFormatted: moment.unix(nextSunriseTime).format('hh:mm a'),
 			minsUntil: (nextSunriseTime - currTime) / 60
 		});
 
 		$scope.events.push({
 			type: 'sunset',
-			timeFormatted: moment().add('minutes', (nextSunsetTime - currTime) / 60).format('hh:MM a'),
+			timeFormatted: moment.unix(nextSunsetTime).format('hh:MM a'),
 			minsUntil: (nextSunsetTime - currTime) / 60
 		});
 	};

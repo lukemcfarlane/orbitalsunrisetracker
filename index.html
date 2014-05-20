@@ -15,30 +15,25 @@
 
   <body ng-controller="mainCtrl">
     <div class="container">
-        <div class="page-header">
+        <div class="page-header text-center">
           <h1>ISS Orbital Sunrise/Sunset Tracker</h1>
         </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="well well-sm">
+                    The ISS is  <strong ng-if="!currentlyLit">not</strong> currently daylit.
+                </div>
 
-        <div class="well well-sm">
-            The ISS is  <strong ng-if="!currentlyLit">not</strong> currently daylit.
-        </div>
-
-        <div ng-animate="'animate'" ng-repeat="event in events | orderBy:'minsUntil'">
-            <event/>
-        </div>
-
-        <form>
-            <div class="checkbox">
-                <label>
-                <input type="checkbox" ng-model="isEmbed" />Embed live stream
-                </label>
+                <div ng-animate="'animate'" ng-repeat="event in events | orderBy:'minsUntil'">
+                    <event/>
+                </div>
             </div>
-        </form>
-        <br />
-        <br />
-        <br />
-        <iframe ng-if="isEmbed" width="360" height="235" src="http://www.ustream.tv/embed/17074538?v=3&wmode=direct" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
-        <a ng-if="isEmbed" href="http://www.ustream.tv/" style="padding: 2px 0px 4px; width: 400px; background: #ffffff; display: block; color: #000000; font-weight: normal; font-size: 10px; text-decoration: underline; text-align: center;" target="_blank">Live streaming video by Ustream</a>
+            <div class="col-md-6">
+                <iframe ng-if="isEmbed" width="360" height="235" src="http://www.ustream.tv/embed/17074538?v=3&wmode=direct" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
+                <a ng-if="isEmbed" href="http://www.ustream.tv/" style="padding: 2px 0px 4px; width: 400px; background: #ffffff; display: block; color: #000000; font-weight: normal; font-size: 10px; text-decoration: underline; text-align: center;" target="_blank">Live streaming video by Ustream</a>
+            </div>
+        </div>
     </div>
   </body>
 

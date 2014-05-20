@@ -2,7 +2,7 @@
 
 var app = angular.module('OrbitalSunriseTracker', function() {});
 app.controller('mainCtrl', function($scope, $interval, $q) {
-	$scope.isEmbed = false;
+	$scope.isEmbed = true;
 	$scope.events = [];
 
 	var updateRemainingTimes = function() {

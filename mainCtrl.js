@@ -1,4 +1,4 @@
-app.controller('mainCtrl', function($scope, $interval, $q) {
+app.controller('mainCtrl', function($scope, $interval, $q, OrbitDataService) {
 	$scope.isEmbed = true;
 	$scope.events = [];
 
@@ -6,28 +6,11 @@ app.controller('mainCtrl', function($scope, $interval, $q) {
 		var remainingTime = "ERR";
 
 		var currTime = Math.round(new Date().getTime() / 1000);
-		var currOrbitData = orbit.orbitData[1];
-		var prevOrbitData = orbit.orbitData[0];
 
-		var nextSunriseTime;
-		var nextSunsetTime;
-
-		for (var i = 1; i < _.size(orbit.orbitData); i++) {
-			currOrbitData = orbit.orbitData[i];
-
-			if (currOrbitData.t < currTime) {
-				$scope.currentlyLit = currOrbitData.s;
-			}
-
-			if (prevOrbitData.s === false && currOrbitData.s === true) {
-				nextSunriseTime = prevOrbitData.t;
-			}
-
-			if (prevOrbitData.s === true && currOrbitData.s === false) {
-				nextSunsetTime = prevOrbitData.t;
-			}
-			prevOrbitData = currOrbitData;
-		}
+		OrbitDataService.init(orbit);
+		var nextSunriseTime = OrbitDataService.getNextSunriseTime(currTime);
+		var nextSunsetTime = OrbitDataService.getNextSunsetTime(currTime);
+		$scope.isCurrentlyDaylit = OrbitDataService.isCurrentlyDaylit(currTime);
 
 		$scope.events = [];
 

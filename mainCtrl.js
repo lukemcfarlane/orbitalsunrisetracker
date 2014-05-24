@@ -1,6 +1,3 @@
-// Code goes here
-
-var app = angular.module('OrbitalSunriseTracker', function() {});
 app.controller('mainCtrl', function($scope, $interval, $q) {
 	$scope.isEmbed = true;
 	$scope.events = [];
@@ -49,18 +46,4 @@ app.controller('mainCtrl', function($scope, $interval, $q) {
 
 	$interval(updateRemainingTimes, 30000);
 	updateRemainingTimes();
-});
-app.directive('event', function() {
-	return {
-		restrict: 'E',
-		template: '<div class="panel panel-info">' +
-			'<div class="panel-heading">' +
-			'    <span class="glyphicon glyphicon-time"/>' +
-			'    {{ event.timeFormatted }}' +
-			'</div>' +
-			'<div class="panel-body">' +
-			'    The next {{ event.type }} will occur in {{ event.minsUntil | number : 0 }} minutes.' +
-			'</div>' +
-			'</div>'
-	};
 });

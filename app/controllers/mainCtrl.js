@@ -28,7 +28,7 @@ app.controller('mainCtrl', function($scope, $interval, $q, OrbitDataService) {
 
 		$scope.events.push({
 			type: 'sunset',
-			timeFormatted: moment.unix(nextSunsetTime).format('hh:MM a'),
+			timeFormatted: moment.unix(nextSunsetTime).format('hh:mm a'),
 			minsUntil: (nextSunsetTime - currTime) / 60
 		});
 	};

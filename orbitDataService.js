@@ -1,3 +1,26 @@
+/**
+ * Get sunrise/sunset times from orbit data.
+ *
+ * OrbitDataService must first be initialised with an orbit object:
+ *
+ * {
+ *  sat: 25544,
+ *  tRef: 1400627050,
+ *  orbitData: [{
+ *      t: 1400627040,
+ *      ln: 29.015,
+ *      lt: 22.332,
+ *      h: 414,
+ *      v: 7.667,
+ *      s: false
+ *  },
+ *  ....
+ *  ]
+ * }
+ *
+ * @author  https://github.com/lukemcfarlane
+ * @date    May 2014
+ */
 app.factory('OrbitDataService', function() {
 	var OrbitDataService = {
 		init: function(orbitData) {

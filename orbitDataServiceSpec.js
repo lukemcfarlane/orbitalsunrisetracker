@@ -1,3 +1,10 @@
+/**
+ * Jasmine test specs for orbitDatService.js.
+ * Uses mock data in mockOrbitData.js.
+ *
+ * @author  https://github.com/lukemcfarlane
+ * @date    May 2014
+ */
 describe('the orbit data service', function() {
 	beforeEach(module('OrbitalSunriseTracker'));
 

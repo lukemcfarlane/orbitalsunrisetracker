@@ -1,3 +1,9 @@
+/**
+ * This is the main controller for the app, used in index.html.
+ *
+ * @author  https://github.com/lukemcfarlane
+ * @date    May 2014
+ */
 app.controller('mainCtrl', function($scope, $interval, $q, OrbitDataService) {
 	$scope.isEmbed = true;
 	$scope.events = [];

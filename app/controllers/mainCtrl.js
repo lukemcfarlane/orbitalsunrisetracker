@@ -16,7 +16,7 @@ app.controller('mainCtrl', function($scope, $interval, $q, OrbitDataService) {
 		OrbitDataService.init(orbit);
 		var nextSunriseTime = OrbitDataService.getNextSunriseTime(currTime);
 		var nextSunsetTime = OrbitDataService.getNextSunsetTime(currTime);
-		$scope.isCurrentlyDaylit = OrbitDataService.isCurrentlyDaylit(currTime);
+		$scope.currentlyLit = OrbitDataService.isCurrentlyDaylit(currTime);
 
 		$scope.events = [];
 

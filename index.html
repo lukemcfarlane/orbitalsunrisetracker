@@ -4,41 +4,40 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+
     <script src="https://code.angularjs.org/1.3.0-beta.5/angular.js"></script>
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/underscorejs/1.5.2/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
     <script src="http://astroviewer-sat2.appspot.com/orbit?var=orbit"></script>
-    <script src="script.js"></script>
+    <script src="app/application.js"></script>
+    <script src="app/services/orbitDataService.js"></script>
+    <script src="app/controllers/mainCtrl.js"></script>
+    <script src="app/directives/event.js"></script>
   </head>
 
   <body ng-controller="mainCtrl">
     <div class="container">
-        <div class="page-header">
+        <div class="page-header text-center">
           <h1>ISS Orbital Sunrise/Sunset Tracker</h1>
         </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+                <div class="well well-sm">
+                    The ISS is  <strong ng-if="!currentlyLit">not</strong> currently daylit.
+                </div>
 
-        <div class="well well-sm">
-            The ISS is  <strong ng-if="!currentlyLit">not</strong> currently daylit.
-        </div>
-
-        <div ng-animate="'animate'" ng-repeat="event in events | orderBy:'minsUntil'">
-            <event/>
-        </div>
-
-        <form>
-            <div class="checkbox">
-                <label>
-                <input type="checkbox" ng-model="isEmbed" />Embed live stream
-                </label>
+                <div ng-animate="'animate'" ng-repeat="event in events | orderBy:'minsUntil'">
+                    <event/>
+                </div>
             </div>
-        </form>
-        <br />
-        <br />
-        <br />
-        <iframe ng-if="isEmbed" width="360" height="235" src="http://www.ustream.tv/embed/17074538?v=3&wmode=direct" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
-        <a ng-if="isEmbed" href="http://www.ustream.tv/" style="padding: 2px 0px 4px; width: 400px; background: #ffffff; display: block; color: #000000; font-weight: normal; font-size: 10px; text-decoration: underline; text-align: center;" target="_blank">Live streaming video by Ustream</a>
+            <div class="col-md-6">
+                <iframe ng-if="isEmbed" width="360" height="235" src="http://www.ustream.tv/embed/17074538?v=3&wmode=direct" scrolling="no" frameborder="0" style="border: 0px none transparent;"></iframe>
+                <a ng-if="isEmbed" href="http://www.ustream.tv/" style="padding: 2px 0px 4px; width: 400px; background: #ffffff; display: block; color: #000000; font-weight: normal; font-size: 10px; text-decoration: underline; text-align: center;" target="_blank">Live streaming video by Ustream</a>
+            </div>
+        </div>
     </div>
   </body>
 

@@ -42,10 +42,10 @@
                         The ISS is  <strong ng-if="!currentlyLit">not</strong> currently daylit.
                     </div>
                     <div class="well well-sm" ng-if="noChangeForOrbit && currentlyLit">
-                        The ISS is currently lit and will be for entire current orbit.
+                        The ISS is currently lit and there will be no sunset during current orbit.
                     </div>
                     <div class="well well-sm" ng-if="noChangeForOrbit && !currentlyLit">
-                        The ISS will not be daylit for entire current orbit. 
+                        The ISS is not currently daylit and there will be no sunrise during current orbit. 
                     </div>
 
                     <div ng-animate="'animate'" ng-repeat="event in events | orderBy:'minsUntil'">

@@ -36,6 +36,11 @@ app.controller('mainCtrl', function($scope, $interval, $q, OrbitDataService) {
 			});
 		}
 
+		if (!_.isNumber(nextSunriseTime) && !_.isNumber(nextSunsetTime)) {
+			$scope.noChangeForOrbit = true;
+		}
+
+
 	};
 
 	$interval(updateRemainingTimes, 30000);

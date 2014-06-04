@@ -20,17 +20,22 @@ app.controller('mainCtrl', function($scope, $interval, $q, OrbitDataService) {
 
 		$scope.events = [];
 
-		$scope.events.push({
-			type: 'sunrise',
-			timeFormatted: moment.unix(nextSunriseTime).format('hh:mm a'),
-			minsUntil: (nextSunriseTime - currTime) / 60
-		});
+		if (_.isNumber(nextSunriseTime)) {
+			$scope.events.push({
+				type: 'sunrise',
+				timeFormatted: moment.unix(nextSunriseTime).format('hh:mm a'),
+				minsUntil: (nextSunriseTime - currTime) / 60
+			});
+		}
 
-		$scope.events.push({
-			type: 'sunset',
-			timeFormatted: moment.unix(nextSunsetTime).format('hh:mm a'),
-			minsUntil: (nextSunsetTime - currTime) / 60
-		});
+		if (_.isNumber(nextSunsetTime)) {
+			$scope.events.push({
+				type: 'sunset',
+				timeFormatted: moment.unix(nextSunsetTime).format('hh:mm a'),
+				minsUntil: (nextSunsetTime - currTime) / 60
+			});
+		}
+
 	};
 
 	$interval(updateRemainingTimes, 30000);

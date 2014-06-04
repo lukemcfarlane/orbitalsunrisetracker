@@ -52,4 +52,10 @@ describe('the orbit data service', function() {
 		var t = OrbitDataService.getNextSunsetTime(1400627160);
 		expect(t).toEqual(1400630874);
 	});
+
+	it('should return undefined if there is no sunrise in current orbit data set', function() {
+		OrbitDataService.init(orbit2);
+		var t = OrbitDataService.getNextSunriseTime(1400627100);
+		expect(t).toEqual(undefined);
+	});
 });

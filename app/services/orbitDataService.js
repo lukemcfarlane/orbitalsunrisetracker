@@ -32,26 +32,38 @@ app.factory('OrbitDataService', function() {
 			}
 		},
 		getNextSunriseTime: function(time) {
+			var sunriseTime;
 			var sunriseData = _.find(
 				OrbitDataService.orbitData.orbitData,
 				function(data) {
-					return data.t >= time &&
-						data.s === false &&
-						data.next.s === true;
+					if (_.isObject(data.next)) {
+						return data.t >= time &&
+							data.s === false &&
+							data.next.s === true;
+					} else {
+						return false;
+					}
 				}
 			);
-			return sunriseData.next.t;
+			if (_.isObject(sunriseData)) sunriseTime = sunriseData.next.t;
+			return sunriseTime;
 		},
 		getNextSunsetTime: function(time) {
+			var sunsetTime;
 			var sunsetData = _.find(
 				OrbitDataService.orbitData.orbitData,
 				function(data) {
-					return data.t >= time &&
-						data.s === true &&
-						data.next.s === false;
+					if (_.isObject(data.next)) {
+						return data.t >= time &&
+							data.s === true &&
+							data.next.s === false;
+					} else {
+						return false;
+					}
 				}
 			);
-			return sunsetData.next.t;
+			if (_.isObject(sunsetData)) sunsetTime = sunsetData.next.t;
+			return sunsetTime;
 		},
 		isCurrentlyDaylit: function(time) {
 			var currData = OrbitDataService.getDataForTime(time);

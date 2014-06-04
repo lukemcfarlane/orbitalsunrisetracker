@@ -1,7 +1,7 @@
 /**
  * This data was causing a failure as of at 2014-06-02.
  */
-var orbit = {
+var orbit2 = {
 	sat: 25544,
 	tRef: 1401704853,
 	orbitData: [{
